@@ -1,0 +1,846 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>flow - kiji-express 2.0.2 API - org.kiji.express.flow</title>
+          <meta name="description" content="flow - kiji - express 2.0.2 API - org.kiji.express.flow" />
+          <meta name="keywords" content="flow kiji express 2.0.2 API org.kiji.express.flow" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../index.html';
+            var hash = 'org.kiji.express.flow.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img src="../../../../lib/package_big.png" />
+        <p id="owner"><a href="../../../package.html" class="extype" name="org">org</a>.<a href="../../package.html" class="extype" name="org.kiji">kiji</a>.<a href="../package.html" class="extype" name="org.kiji.express">express</a></p>
+        <h1>flow</h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">flow</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Module providing the ability to write Scalding using data stored in Kiji tables.</p><p>KijiExpress users should import the members of this module to gain access to factory
+methods that produce <a href="KijiSource.html" class="extype" name="org.kiji.express.flow.KijiSource">org.kiji.express.flow.KijiSource</a>s that can perform data processing
+operations that read from or write to Kiji tables.</p><pre><span class="kw">import</span> org.kiji.express.flow._</pre><h5> Reading from columns and map-type column families. </h5><p>Specify columns to read from a Kiji table using instances of the
+<a href="QualifiedColumnInputSpec.html" class="extype" name="org.kiji.express.flow.QualifiedColumnInputSpec">org.kiji.express.flow.QualifiedColumnInputSpec</a> and
+<a href="ColumnFamilyInputSpec.html" class="extype" name="org.kiji.express.flow.ColumnFamilyInputSpec">org.kiji.express.flow.ColumnFamilyInputSpec</a> classes, which contain fields for specifying
+the names of the columns to read, as well as what data to read back (e.g., only the latest
+version of a cell, or a certain number of recent versions) and how it is read back (e.g., using
+paging to limit the amount of data in memory).</p><p>Specify a fully-qualified column with an instance of <code>QualifiedColumnInputSpec</code>.  Below are
+several examples for specifying the column <code>info:name</code>:</p><pre><span class="cmt">// Request the latest cell.</span>
+<span class="kw">val</span> myInputColumn = QualifiedColumnInputSpec.builder
+    .withColumn(<span class="lit">"info"</span>, <span class="lit">"name"</span>)
+    .build
+<span class="kw">val</span> myInputColumn = QualifiedColumnInputSpec.builder
+    .withColumn(<span class="lit">"info"</span>, <span class="lit">"name"</span>)
+    .withMaxVersions(latest)
+    .build
+<span class="kw">val</span> myInputColumn = QualifiedColumnInputSpec.builder
+    .withColumn(<span class="lit">"info"</span>, <span class="lit">"name"</span>)
+    .withMaxVersions(<span class="num">1</span>)
+    .build
+
+<span class="cmt">// Request every cell.</span>
+<span class="kw">val</span> myInputColumn = QualifiedColumnInputSpec.builder
+    .withColumn(<span class="lit">"info"</span>, <span class="lit">"name"</span>)
+    .withMaxVersions(all)
+    .build
+
+<span class="cmt">// Request the 10 most recent cells.</span>
+<span class="kw">val</span> myInputColumn = QualifiedColumnInputSpec.builder
+    .withColumn(<span class="lit">"info"</span>, <span class="lit">"name"</span>)
+    .withMaxVersions(<span class="num">10</span>)
+    .build</pre><p>To request cells from all of the columns in a family, use the <code>ColumnFamilyInputSpec</code>
+class, which, like <code>QualifiedColumnInputSpec</code>, provides options on the input spec such as
+the maximum number of cell versions to return, filters to use, etc.  A user can
+specify a filter, for example, to specify a regular expression such that a column in the family
+will only be retrieved if its qualifier matches the regular expression:</p><pre><span class="cmt">// Gets the most recent cell for all columns in the column family "searches".</span>
+<span class="kw">var</span> myFamilyInput = ColumnFamilyInputSpec.builder.withFamily(<span class="lit">"searches"</span>).build
+
+<span class="cmt">// Gets all cells for all columns in the column family "searches" whose</span>
+<span class="cmt">// qualifiers contain the word "penguin".</span>
+myFamilyInput = ColumnFamilyInputSpec.builder
+    .withFamily(<span class="lit">"searches"</span>)
+    .withFilterSpec(ColumnFilterSpec.Regex(<span class="lit">""</span><span class="lit">".*penguin.*"</span><span class="lit">""</span>))
+    .withMaxVersions(all)
+    .build
+
+<span class="cmt">// Gets all cells for all columns in the column family "searches".</span>
+myFamilyInput = ColumnFamilyInputSpec.builder
+    .withFamily(<span class="lit">"searches"</span>)
+    .withMaxVersions(all)
+    .build</pre><p>See <a href="QualifiedColumnInputSpec.html" class="extype" name="org.kiji.express.flow.QualifiedColumnInputSpec">org.kiji.express.flow.QualifiedColumnInputSpec</a> and
+<a href="ColumnFamilyInputSpec.html" class="extype" name="org.kiji.express.flow.ColumnFamilyInputSpec">org.kiji.express.flow.ColumnFamilyInputSpec</a> for a full list of options for column input
+specs.</p><p>When specifying a column for writing, the user can likewise use the
+<code>QualifiedColumnOutputSpec</code> and <code>ColumnFamilyOutputSpec</code> classes to indicate the name of
+the column and any options.  The following, for example, specifies a column to use for writes
+with the default reader schema:</p><pre><span class="cmt">// Create a column output spec for writing to "info:name" using the default reader schema</span>
+<span class="kw">var</span> myWriteReq = QualifiedColumnOutputSpec.builder
+    .withColumn(<span class="lit">"info"</span>, <span class="lit">"name"</span>)
+    .withSchemaSpec(SchemaSpec.DefaultReader)
+    .build</pre><p>When writing to a family, you specify a Scalding field that contains the name of the qualifier to
+use for your write.  For example, to use the value in the Scalding field <code><code>'terms</code></code> as the name
+of the column qualifier, use the following:</p><pre><span class="kw">var</span> myOutputFamily = ColumnFamilyOutputSpec.builder
+.withFamily(<span class="lit">"searches"</span>)
+.withQualifierSelector('terms)
+.build</pre><p>See <a href="QualifiedColumnOutputSpec.html" class="extype" name="org.kiji.express.flow.QualifiedColumnOutputSpec">org.kiji.express.flow.QualifiedColumnOutputSpec</a> and
+<a href="ColumnFamilyOutputSpec.html" class="extype" name="org.kiji.express.flow.ColumnFamilyOutputSpec">org.kiji.express.flow.ColumnFamilyOutputSpec</a> for a full list of options for column output
+specs.</p><h5> Getting input from a Kiji table. </h5><p>The factory <code>KijiInput</code> can be used to obtain a
+<a href="KijiSource.html" class="extype" name="org.kiji.express.flow.KijiSource">org.kiji.express.flow.KijiSource</a> to process rows from the table (represented as tuples)
+using various operations. When using <code>KijiInput</code>, users specify a table (using a Kiji URI) and
+use column specs and other options to control how data is read from Kiji into tuple fields.
+<code><code>KijiInput</code></code> contains different factories that allow for abbreviated column specifications,
+as illustrated in the examples below:</p><pre><span class="cmt">// Read the most recent cells from columns "info:id" and "info:name" into tuple fields "id"</span>
+<span class="cmt">// and "name" (don't explicitly instantiate a QualifiedColumnInputSpec).</span>
+<span class="kw">var</span> myKijiSource = KijiInput.builder
+    .withTableURI(<span class="lit">"kiji://.env/default/newsgroup_users"</span>)
+    .withColumns(<span class="lit">"info:id"</span> -&gt; 'id, <span class="lit">"info:name"</span> -&gt; 'name)
+    .build
+
+<span class="cmt">// Read only cells from "info:id" that occurred before Unix time 100000.</span>
+<span class="cmt">// (Don't explicitly instantiate a QualifiedColumnInputSpec)</span>
+myKijiSource = KijiInput.builder
+    .withTableURI(<span class="lit">"kiji://.env/default/newsgroup_users"</span>)
+    .withTimeRangeSpec(Before(<span class="num">100000</span>))
+    .withColumns(<span class="lit">"info:id"</span> -&gt; 'id)
+    .build
+
+<span class="cmt">// Read all versions from "info:posts"</span>
+myKijiSource = KijiInput.builder
+    .withTableURI(<span class="lit">"kiji://.env/default/newsgroup_users"</span>)
+    .withColumnSpecs(
+        QualifiedColumnOutputSpec.builder
+            .withColumn(<span class="lit">"info"</span>, <span class="lit">"id"</span>)
+            .withMaxVersions(all)
+            .build -&gt; 'id
+    )
+    .build</pre><p>See <a href="KijiInput$.html" class="extype" name="org.kiji.express.flow.KijiInput">org.kiji.express.flow.KijiInput</a> and <a href="ColumnInputSpec.html" class="extype" name="org.kiji.express.flow.ColumnInputSpec">org.kiji.express.flow.ColumnInputSpec</a> for more
+information on how to create and use time ranges for requesting data.</p><h5> Writing to a Kiji table. </h5><p>Data from any Cascading <code>Source</code> can be written to a Kiji table. Tuples to be written to a
+Kiji table must have a field named <code>entityId</code> which contains an entity id for a row in a Kiji
+table. The contents of a tuple field can be written as a cell at the most current timestamp to
+a column in a Kiji table. To do so, you specify a mapping from tuple field names to qualified
+Kiji table column names.</p><pre><span class="cmt">// Write from the tuple field "average" to the column "stats:average" of the Kiji table</span>
+<span class="cmt">// "newsgroup_users".</span>
+mySource.write(
+    KijiOutput.builder
+        .withTableURI(<span class="lit">"kiji://.env/default/newsgroup_users"</span>)
+        .withColumns('average -&gt; <span class="lit">"stats:average"</span>)
+        .build
+)
+
+<span class="cmt">// Create a KijiSource to write the data in tuple field "results" to column family</span>
+<span class="cmt">// "searches" with the string in tuple field "terms" as the column qualifier.</span>
+myOutput = KijiOutput.builder
+    .withTableURI(<span class="lit">"kiji://.env/default/searchstuff"</span>)
+    .withColumnSpecs('results -&gt; ColumnFamilyOutputSpec.builder
+        .withFamily(<span class="lit">"searches"</span>)
+        .withQualifierSelector('terms)
+        .build
+    )
+    .build</pre><h5> Specifying ranges of time. </h5><p>Instances of <a href="TimeRangeSpec.html" class="extype" name="org.kiji.express.flow.TimeRangeSpec">org.kiji.express.flow.TimeRangeSpec</a> are used to specify a range of timestamps
+that should be retrieved when reading data from Kiji. There are five implementations of
+<code>TimeRange</code> that can be used when requesting data.</p><ul><li>All</li><li>At(timestamp: Long)</li><li>From(begin: Long)</li><li>Before(end: Long)</li><li>Between(begin: Long, end: Long)</li></ul><p>These implementations can be used with <a href="KijiInput$.html" class="extype" name="org.kiji.express.flow.KijiInput">org.kiji.express.flow.KijiInput</a> to specify a range
+that a Kiji cell's timestamp must be in to be retrieved. For example,
+to read cells from the column <code>info:word</code> that have timestamps between <code>0L</code> and <code>10L</code>,
+you can do the following.
+</p></div><dl class="attributes block"> <div class="block">Example:
+                <ol><li class="cmt"><p></p><pre>KijiInput.builder
+.withTableURI(<span class="lit">"kiji://.env/default/words"</span>)
+.withTimeRangeSpec(Between(<span class="num">0</span>L, <span class="num">10</span>L))
+.withColumns(<span class="lit">"info:word"</span> -&gt; 'word)
+.build</pre></li></ol>
+              </div></dl><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="org.kiji.express.flow"><span>flow</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="org.kiji.express.flow.ColumnFamilyInputSpec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ColumnFamilyInputSpecextendsColumnInputSpecwithSerializable"></a>
+      <a id="ColumnFamilyInputSpec:ColumnFamilyInputSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ColumnFamilyInputSpec.html"><span class="name">ColumnFamilyInputSpec</span></a><span class="result"> extends <a href="ColumnInputSpec.html" class="extype" name="org.kiji.express.flow.ColumnInputSpec">ColumnInputSpec</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Specifies a request for versions of cells from a column family.</p>
+    </li><li name="org.kiji.express.flow.ColumnFamilyOutputSpec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ColumnFamilyOutputSpecextendsColumnOutputSpec"></a>
+      <a id="ColumnFamilyOutputSpec:ColumnFamilyOutputSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ColumnFamilyOutputSpec.html"><span class="name">ColumnFamilyOutputSpec</span></a><span class="result"> extends <a href="ColumnOutputSpec.html" class="extype" name="org.kiji.express.flow.ColumnOutputSpec">ColumnOutputSpec</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A specification describing how to write data from a scalding tuple field to a family of columns
+in a Kiji table.</p>
+    </li><li name="org.kiji.express.flow.ColumnFilterSpec" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ColumnFilterSpecextendsObject"></a>
+      <a id="ColumnFilterSpec:ColumnFilterSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ColumnFilterSpec.html"><span class="name">ColumnFilterSpec</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A specification describing a column filter to use when reading data from a Kiji table.</p>
+    </li><li name="org.kiji.express.flow.ColumnInputSpec" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ColumnInputSpecextendsObject"></a>
+      <a id="ColumnInputSpec:ColumnInputSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ColumnInputSpec.html"><span class="name">ColumnInputSpec</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A request for data from a Kiji table.</p>
+    </li><li name="org.kiji.express.flow.ColumnOutputSpec" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ColumnOutputSpecextendsObject"></a>
+      <a id="ColumnOutputSpec:ColumnOutputSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ColumnOutputSpec.html"><span class="name">ColumnOutputSpec</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A specification describing how to write data from a scalding tuple field to a Kiji table.</p>
+    </li><li name="org.kiji.express.flow.EntityId" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="EntityIdextendsProductwithOrdered[org.kiji.express.flow.EntityId]withSerializable"></a>
+      <a id="EntityId:EntityId"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="EntityId.html"><span class="name">EntityId</span></a><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Ordered">Ordered</span>[<a href="EntityId.html" class="extype" name="org.kiji.express.flow.EntityId">EntityId</a>] with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An entity ID, or row key, that can be used to address a row in a Kiji table.</p>
+    </li><li name="org.kiji.express.flow.EntityIdFormatMismatchException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="EntityIdFormatMismatchExceptionextendsRuntimeException"></a>
+      <a id="EntityIdFormatMismatchException:EntityIdFormatMismatchException"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="EntityIdFormatMismatchException.html"><span class="name">EntityIdFormatMismatchException</span></a><span class="result"> extends <span class="extype" name="java.lang.RuntimeException">RuntimeException</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A runtime exception thrown when two EntityIds with different formats are compared.</p>
+    </li><li name="org.kiji.express.flow.ExpressKeyValueStore" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ExpressKeyValueStore[K,V]extendsObject"></a>
+      <a id="ExpressKeyValueStore[K,V]:ExpressKeyValueStore[K,V]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ExpressKeyValueStore.html"><span class="name">ExpressKeyValueStore</span></a><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A map from keys to values backed by a data store.</p>
+    </li><li name="org.kiji.express.flow.FlowCell" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FlowCell[T]extendsProductwithSerializable"></a>
+      <a id="FlowCell[T]:FlowCell[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="FlowCell.html"><span class="name">FlowCell</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="family">family: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="qualifier">qualifier: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="version">version: <span class="extype" name="scala.Long">Long</span> = <span class="defval" name="org.apache.hadoop.hbase.HConstants.LATEST_TIMESTAMP">...</span></span>, <span name="datum">datum: <span class="extype" name="org.kiji.express.flow.FlowCell.T">T</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A container for data from a Kiji table.</p>
+    </li><li name="org.kiji.express.flow.InvalidKijiTapException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="InvalidKijiTapExceptionextendsRuntimeException"></a>
+      <a id="InvalidKijiTapException:InvalidKijiTapException"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="InvalidKijiTapException.html"><span class="name">InvalidKijiTapException</span></a><span class="result"> extends <span class="extype" name="java.lang.RuntimeException">RuntimeException</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">This exception is thrown when a KijiTap cannot validate that the Kiji tables or columns it
+requires exist.</p>
+    </li><li name="org.kiji.express.flow.KijiJob" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KijiJobextendsJobwithPipeConversionswithAvroTupleConversions"></a>
+      <a id="KijiJob:KijiJob"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="KijiJob.html"><span class="name">KijiJob</span></a><span class="result"> extends <span class="extype" name="com.twitter.scalding.Job">Job</span> with <span class="extype" name="org.kiji.express.flow.util.PipeConversions">PipeConversions</span> with <a href="util/AvroTupleConversions.html" class="extype" name="org.kiji.express.flow.util.AvroTupleConversions">AvroTupleConversions</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">KijiJob is KijiExpress's extension of Scalding's <code>Job</code>, and users should extend it when writing
+their own jobs in KijiExpress.</p>
+    </li><li name="org.kiji.express.flow.KijiPipe" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KijiPipeextendsObject"></a>
+      <a id="KijiPipe:KijiPipe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="KijiPipe.html"><span class="name">KijiPipe</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A class that adds Kiji-specific functionality to a Cascading pipe, allowing the user to pack
+fields into an Avro record.</p>
+    </li><li name="org.kiji.express.flow.KijiSource" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KijiSourceextendsSource"></a>
+      <a id="KijiSource:KijiSource"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="KijiSource.html"><span class="name">KijiSource</span></a><span class="result"> extends <span class="extype" name="com.twitter.scalding.Source">Source</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A read or write view of a Kiji table.</p>
+    </li><li name="org.kiji.express.flow.PagingSpec" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="PagingSpecextendsSerializable"></a>
+      <a id="PagingSpec:PagingSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="PagingSpec.html"><span class="name">PagingSpec</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A specification of the type of paging to use.</p>
+    </li><li name="org.kiji.express.flow.QualifiedColumnInputSpec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="QualifiedColumnInputSpecextendsColumnInputSpecwithSerializable"></a>
+      <a id="QualifiedColumnInputSpec:QualifiedColumnInputSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="QualifiedColumnInputSpec.html"><span class="name">QualifiedColumnInputSpec</span></a><span class="result"> extends <a href="ColumnInputSpec.html" class="extype" name="org.kiji.express.flow.ColumnInputSpec">ColumnInputSpec</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Specifies a request for versions of cells from a fully-qualified column.</p>
+    </li><li name="org.kiji.express.flow.QualifiedColumnOutputSpec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="QualifiedColumnOutputSpecextendsColumnOutputSpecwithSerializable"></a>
+      <a id="QualifiedColumnOutputSpec:QualifiedColumnOutputSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="QualifiedColumnOutputSpec.html"><span class="name">QualifiedColumnOutputSpec</span></a><span class="result"> extends <a href="ColumnOutputSpec.html" class="extype" name="org.kiji.express.flow.ColumnOutputSpec">ColumnOutputSpec</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A specification describing how to write data from a scalding tuple field to a column in a Kiji
+table.</p>
+    </li><li name="org.kiji.express.flow.RowFilterSpec" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="RowFilterSpecextendsSerializable"></a>
+      <a id="RowFilterSpec:RowFilterSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="RowFilterSpec.html"><span class="name">RowFilterSpec</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A specification describing a row filter to use when reading data from a Kiji table.</p>
+    </li><li name="org.kiji.express.flow.RowRangeSpec" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="RowRangeSpecextendsObject"></a>
+      <a id="RowRangeSpec:RowRangeSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="RowRangeSpec.html"><span class="name">RowRangeSpec</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A specification of the range of rows that should be read from a Kiji table.</p>
+    </li><li name="org.kiji.express.flow.SchemaSpec" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SchemaSpecextendsSerializable"></a>
+      <a id="SchemaSpec:SchemaSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="SchemaSpec.html"><span class="name">SchemaSpec</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A specification describing the schema to use when reading or writing values to a column in a Kiji
+table.</p>
+    </li><li name="org.kiji.express.flow.TimeRangeSpec" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="TimeRangeSpecextendsSerializable"></a>
+      <a id="TimeRangeSpec:TimeRangeSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="TimeRangeSpec.html"><span class="name">TimeRangeSpec</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A specification of the range cell versions that should be read from a column in a Kiji table.</p>
+    </li><li name="org.kiji.express.flow.TransientStream" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TransientStream[T]extendsStream[T]"></a>
+      <a id="TransientStream[T]:TransientStream[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="TransientStream.html"><span class="name">TransientStream</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.Stream">Stream</span>[<span class="extype" name="org.kiji.express.flow.TransientStream.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt"><code>TransientStream</code> is a special case of <span class="extype" name="scala.collection.Seq">scala.collection.Seq</span> meant to be backed by a source
+which is larger than memory.</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="org.kiji.express.flow.ColumnFamilyInputSpec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ColumnFamilyInputSpec"></a>
+      <a id="ColumnFamilyInputSpec:ColumnFamilyInputSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ColumnFamilyInputSpec$.html"><span class="name">ColumnFamilyInputSpec</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides factory functions for creating <a href="ColumnFamilyInputSpec.html" class="extype" name="org.kiji.express.flow.ColumnFamilyInputSpec">org.kiji.express.flow.ColumnFamilyInputSpec</a>
+instances.</p>
+    </li><li name="org.kiji.express.flow.ColumnFamilyOutputSpec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ColumnFamilyOutputSpec"></a>
+      <a id="ColumnFamilyOutputSpec:ColumnFamilyOutputSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ColumnFamilyOutputSpec$.html"><span class="name">ColumnFamilyOutputSpec</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides factory functions for creating <a href="ColumnFamilyOutputSpec.html" class="extype" name="org.kiji.express.flow.ColumnFamilyOutputSpec">org.kiji.express.flow.ColumnFamilyOutputSpec</a>
+instances.</p>
+    </li><li name="org.kiji.express.flow.ColumnFilterSpec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ColumnFilterSpec"></a>
+      <a id="ColumnFilterSpec:ColumnFilterSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ColumnFilterSpec$.html"><span class="name">ColumnFilterSpec</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides <a href="ColumnFilterSpec.html" class="extype" name="org.kiji.express.flow.ColumnFilterSpec">org.kiji.express.flow.ColumnFilterSpec</a> implementations.</p>
+    </li><li name="org.kiji.express.flow.ColumnInputSpec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ColumnInputSpec"></a>
+      <a id="ColumnInputSpec:ColumnInputSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ColumnInputSpec$.html"><span class="name">ColumnInputSpec</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides convenience factory methods for creating <a href="ColumnInputSpec.html" class="extype" name="org.kiji.express.flow.ColumnInputSpec">org.kiji.express.flow.ColumnInputSpec</a>
+instances.</p>
+    </li><li name="org.kiji.express.flow.ColumnOutputSpec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ColumnOutputSpec"></a>
+      <a id="ColumnOutputSpec:ColumnOutputSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ColumnOutputSpec$.html"><span class="name">ColumnOutputSpec</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides factory functions for creating <a href="ColumnOutputSpec.html" class="extype" name="org.kiji.express.flow.ColumnOutputSpec">org.kiji.express.flow.ColumnOutputSpec</a> instances.</p>
+    </li><li name="org.kiji.express.flow.EntityId" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="EntityId"></a>
+      <a id="EntityId:EntityId"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="EntityId$.html"><span class="name">EntityId</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Companion object for EntityId.</p>
+    </li><li name="org.kiji.express.flow.ExpressKeyValueStore" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ExpressKeyValueStore"></a>
+      <a id="ExpressKeyValueStore:ExpressKeyValueStore"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ExpressKeyValueStore$.html"><span class="name">ExpressKeyValueStore</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">A factory for key-value stores backed by specific KijiMR key-value store implementations.</p>
+    </li><li name="org.kiji.express.flow.ExpressKijiTableKeyValueStore" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ExpressKijiTableKeyValueStore"></a>
+      <a id="ExpressKijiTableKeyValueStore:ExpressKijiTableKeyValueStore"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ExpressKijiTableKeyValueStore$.html"><span class="name">ExpressKijiTableKeyValueStore</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Special factory methods for KijiTable key-value stores.</p>
+    </li><li name="org.kiji.express.flow.ExpressTool" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ExpressTool"></a>
+      <a id="ExpressTool:ExpressTool"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ExpressTool$.html"><span class="name">ExpressTool</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">The main-method entry point for running an Express job.</p>
+    </li><li name="org.kiji.express.flow.FlowCell" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FlowCell"></a>
+      <a id="FlowCell:FlowCell"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="FlowCell$.html"><span class="name">FlowCell</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Companion object containing factory methods for creating flow cells and orderings for sorting
+cells.</p>
+    </li><li name="org.kiji.express.flow.KijiInput" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KijiInput"></a>
+      <a id="KijiInput:KijiInput"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="KijiInput$.html"><span class="name">KijiInput</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Factory methods for constructing <a href="KijiSource.html" class="extype" name="org.kiji.express.flow.KijiSource">org.kiji.express.flow.KijiSource</a>s that will be used as
+inputs to a KijiExpress flow.</p>
+    </li><li name="org.kiji.express.flow.KijiOutput" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KijiOutput"></a>
+      <a id="KijiOutput:KijiOutput"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="KijiOutput$.html"><span class="name">KijiOutput</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Factory methods for constructing <a href="KijiSource.html" class="extype" name="org.kiji.express.flow.KijiSource">org.kiji.express.flow.KijiSource</a>s that will be used as
+outputs of a KijiExpress flow.</p>
+    </li><li name="org.kiji.express.flow.PagingSpec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PagingSpec"></a>
+      <a id="PagingSpec:PagingSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="PagingSpec$.html"><span class="name">PagingSpec</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides <a href="PagingSpec.html" class="extype" name="org.kiji.express.flow.PagingSpec">org.kiji.express.flow.PagingSpec</a> implementations.</p>
+    </li><li name="org.kiji.express.flow.QualifiedColumnInputSpec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="QualifiedColumnInputSpec"></a>
+      <a id="QualifiedColumnInputSpec:QualifiedColumnInputSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="QualifiedColumnInputSpec$.html"><span class="name">QualifiedColumnInputSpec</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides factory functions for creating <a href="QualifiedColumnInputSpec.html" class="extype" name="org.kiji.express.flow.QualifiedColumnInputSpec">org.kiji.express.flow.QualifiedColumnInputSpec</a>
+instances.</p>
+    </li><li name="org.kiji.express.flow.QualifiedColumnOutputSpec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="QualifiedColumnOutputSpec"></a>
+      <a id="QualifiedColumnOutputSpec:QualifiedColumnOutputSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="QualifiedColumnOutputSpec$.html"><span class="name">QualifiedColumnOutputSpec</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides factory functions for creating <a href="QualifiedColumnOutputSpec.html" class="extype" name="org.kiji.express.flow.QualifiedColumnOutputSpec">org.kiji.express.flow.QualifiedColumnOutputSpec</a>
+instances.</p>
+    </li><li name="org.kiji.express.flow.RowFilterSpec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RowFilterSpec"></a>
+      <a id="RowFilterSpec:RowFilterSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="RowFilterSpec$.html"><span class="name">RowFilterSpec</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides <a href="RowFilterSpec.html" class="extype" name="org.kiji.express.flow.RowFilterSpec">org.kiji.express.flow.RowFilterSpec</a> implementations.</p>
+    </li><li name="org.kiji.express.flow.RowRangeSpec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RowRangeSpec"></a>
+      <a id="RowRangeSpec:RowRangeSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="RowRangeSpec$.html"><span class="name">RowRangeSpec</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides <a href="RowRangeSpec.html" class="extype" name="org.kiji.express.flow.RowRangeSpec">org.kiji.express.flow.RowRangeSpec</a> implementations.</p>
+    </li><li name="org.kiji.express.flow.SchemaSpec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SchemaSpec"></a>
+      <a id="SchemaSpec:SchemaSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SchemaSpec$.html"><span class="name">SchemaSpec</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides <a href="SchemaSpec.html" class="extype" name="org.kiji.express.flow.SchemaSpec">org.kiji.express.flow.SchemaSpec</a> implementations.</p>
+    </li><li name="org.kiji.express.flow.TimeRangeSpec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TimeRangeSpec"></a>
+      <a id="TimeRangeSpec:TimeRangeSpec"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="TimeRangeSpec$.html"><span class="name">TimeRangeSpec</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides <a href="TimeRangeSpec.html" class="extype" name="org.kiji.express.flow.TimeRangeSpec">org.kiji.express.flow.TimeRangeSpec</a> implementations.</p>
+    </li><li name="org.kiji.express.flow.package#all" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="all:Int"></a>
+      <a id="all:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">all</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Used with a column input spec to indicate that all cells of a column should be retrieved.</p>
+    </li><li name="org.kiji.express.flow.framework" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="framework"></a>
+      <a id="framework:framework"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="framework/package.html"><span class="name">framework</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Package containing supporting classes and objects for the KijiExpress flow API.</p>
+    </li><li name="org.kiji.express.flow.package#latest" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="latest:Int"></a>
+      <a id="latest:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">latest</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Used with a column input spec to indicate that only the latest cell of a column should be
+retrieved.</p>
+    </li><li name="org.kiji.express.flow.util" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="util"></a>
+      <a id="util:util"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="util/package.html"><span class="name">util</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Package containing utility classes for the KijiExpress flow API.</p>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

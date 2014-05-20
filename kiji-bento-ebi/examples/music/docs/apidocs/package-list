@@ -1,0 +1,6 @@
+org.kiji.examples.music
+org.kiji.examples.music.bulkimport
+org.kiji.examples.music.gather
+org.kiji.examples.music.map
+org.kiji.examples.music.produce
+org.kiji.examples.music.reduce

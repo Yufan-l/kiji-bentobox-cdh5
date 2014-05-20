@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>serialization - kiji-express 2.0.2 API - org.kiji.express.flow.framework.serialization</title>
+          <meta name="description" content="serialization - kiji - express 2.0.2 API - org.kiji.express.flow.framework.serialization" />
+          <meta name="keywords" content="serialization kiji express 2.0.2 API org.kiji.express.flow.framework.serialization" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../../index.html';
+            var hash = 'org.kiji.express.flow.framework.serialization.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img src="../../../../../../lib/package_big.png" />
+        <p id="owner"><a href="../../../../../package.html" class="extype" name="org">org</a>.<a href="../../../../package.html" class="extype" name="org.kiji">kiji</a>.<a href="../../../package.html" class="extype" name="org.kiji.express">express</a>.<a href="../../package.html" class="extype" name="org.kiji.express.flow">flow</a>.<a href="../package.html" class="extype" name="org.kiji.express.flow.framework">framework</a></p>
+        <h1>serialization</h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">serialization</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Package containing utility classes related to serialization of data during a KijiExpress flow.
+Includes components for integrating avro and kryo serialization.
+</p></div><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="org.kiji.express.flow.framework.serialization"><span>serialization</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="org.kiji.express.flow.framework.serialization.AvroGenericSerializer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AvroGenericSerializerextendsSerializer[org.apache.avro.generic.GenericContainer]"></a>
+      <a id="AvroGenericSerializer:AvroGenericSerializer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AvroGenericSerializer.html"><span class="name">AvroGenericSerializer</span></a><span class="result"> extends <span class="extype" name="com.esotericsoftware.kryo.Serializer">Serializer</span>[<span class="extype" name="org.apache.avro.generic.GenericContainer">GenericContainer</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides serialization for Avro generic records while using Kryo serialization.</p>
+    </li><li name="org.kiji.express.flow.framework.serialization.AvroSchemaSerializer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AvroSchemaSerializerextendsSerializer[org.apache.avro.Schema]"></a>
+      <a id="AvroSchemaSerializer:AvroSchemaSerializer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AvroSchemaSerializer.html"><span class="name">AvroSchemaSerializer</span></a><span class="result"> extends <span class="extype" name="com.esotericsoftware.kryo.Serializer">Serializer</span>[<span class="extype" name="org.apache.avro.Schema">Schema</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides serialization for Avro schemas while using Kryo serialization.</p>
+    </li><li name="org.kiji.express.flow.framework.serialization.AvroSpecificSerializer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AvroSpecificSerializerextendsSerializer[org.apache.avro.specific.SpecificRecord]"></a>
+      <a id="AvroSpecificSerializer:AvroSpecificSerializer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AvroSpecificSerializer.html"><span class="name">AvroSpecificSerializer</span></a><span class="result"> extends <span class="extype" name="com.esotericsoftware.kryo.Serializer">Serializer</span>[<span class="extype" name="org.apache.avro.specific.SpecificRecord">SpecificRecord</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Provides serialization for Avro specific records while using Kryo serialization.</p>
+    </li><li name="org.kiji.express.flow.framework.serialization.KijiKryoExternalizer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KijiKryoExternalizer[T]extendsExternalizer[T]"></a>
+      <a id="KijiKryoExternalizer[T]:KijiKryoExternalizer[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="KijiKryoExternalizer.html"><span class="name">KijiKryoExternalizer</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="com.twitter.scalding.serialization.Externalizer">Externalizer</span>[<span class="extype" name="org.kiji.express.flow.framework.serialization.KijiKryoExternalizer.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Serializable container for wrapping objects using Kryo.</p>
+    </li><li name="org.kiji.express.flow.framework.serialization.KijiKryoInstantiator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KijiKryoInstantiatorextendsKryoHadoop"></a>
+      <a id="KijiKryoInstantiator:KijiKryoInstantiator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="KijiKryoInstantiator.html"><span class="name">KijiKryoInstantiator</span></a><span class="result"> extends <span class="extype" name="com.twitter.scalding.serialization.KryoHadoop">KryoHadoop</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Kryo specification that adds avro schema, generic record, and specific record serialization
+support.</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="org.kiji.express.flow.framework.serialization.KijiKryoExternalizer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KijiKryoExternalizer"></a>
+      <a id="KijiKryoExternalizer:KijiKryoExternalizer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="KijiKryoExternalizer$.html"><span class="name">KijiKryoExternalizer</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Constructors for wrapping objects with a java-serializable container using Kryo.</p>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

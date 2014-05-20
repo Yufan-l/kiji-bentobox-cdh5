@@ -1,0 +1,27 @@
+
+                     Kiji Phonebook example release notes
+
+
+Version 1.0.0-rc4
+  * DOCS-26. Update bulk importing to use KijiMR; deprecate MapReduce
+      examples. Check out the "Kiji Music" example project for a
+      complete KijiMR example application.
+  * SCHEMA-133. Update usage to match API from KjiiSchema 1.0.0-rc4
+      (use KijiDataRequestBuilders instead of mutable KijiDataRequests.)
+
+Version 1.0.0-rc3
+  * SCHEMA-50. Update usage to match API from KijiSchema 1.0.0-rc3
+      (release() and retain() methods for Kiji objects)
+  * SCHEMA-97. Changed instances of Kiji.open(...) to Kiji.Factory.open(...).
+
+Version 1.0.0-rc2
+  * PHONE-7. Bugfix: Set zip code to 'int' in layout.
+  * PHONE-6. Use deprecated KijiSchema MapReduce classes.
+      These classes are marked as deprecated, because they will be
+      replaced by the Kiji MapReduce library. Stay tuned for that
+      release.
+  * SCHEMA-59. Declare an explicit dependency on the CDH4 platform module.
+  * PHONE-2. Support reading console input from Eclipse.
+
+Version 1.0.0-rc1
+  * First release candidate.

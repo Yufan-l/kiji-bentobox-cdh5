@@ -1,0 +1,1054 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>RecommendationPipe - kiji-modeling 0.9.0 API - org.kiji.modeling.lib.RecommendationPipe</title>
+          <meta name="description" content="RecommendationPipe - kiji - modeling 0.9.0 API - org.kiji.modeling.lib.RecommendationPipe" />
+          <meta name="keywords" content="RecommendationPipe kiji modeling 0.9.0 API org.kiji.modeling.lib.RecommendationPipe" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../index.html';
+            var hash = 'org.kiji.modeling.lib.RecommendationPipe';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="type">
+      <div id="definition">
+        <img src="../../../../lib/class_big.png" />
+        <p id="owner"><a href="../../../package.html" class="extype" name="org">org</a>.<a href="../../package.html" class="extype" name="org.kiji">kiji</a>.<a href="../package.html" class="extype" name="org.kiji.modeling">modeling</a>.<a href="package.html" class="extype" name="org.kiji.modeling.lib">lib</a></p>
+        <h1>RecommendationPipe</h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">RecommendationPipe</span><span class="result"> extends <span class="extype" name="com.twitter.scalding.FieldConversions">FieldConversions</span> with <a href="../framework/ModelPipeConversions.html" class="extype" name="org.kiji.modeling.framework.ModelPipeConversions">ModelPipeConversions</a></span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This class provides extensions to Scalding's RichPipe in order to perform recommendations. There
+must be an <span class="extype" name="scala.math.Ordering">scala.math.Ordering</span> defined for the IDs used for recommendations
+(e.g. product IDs), i.e. there must be a way to compare them. For most commonly used data
+types (e.g. Int, String, etc.) this is already provided by Scala.
+</p></div><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><a href="../framework/ModelPipeConversions.html" class="extype" name="org.kiji.modeling.framework.ModelPipeConversions">ModelPipeConversions</a>, <span class="extype" name="com.twitter.scalding.FieldConversions">FieldConversions</span>, <span class="extype" name="com.twitter.scalding.LowPriorityFieldConversions">LowPriorityFieldConversions</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="org.kiji.modeling.lib.RecommendationPipe"><span>RecommendationPipe</span></li><li class="in" name="org.kiji.modeling.framework.ModelPipeConversions"><span>ModelPipeConversions</span></li><li class="in" name="com.twitter.scalding.FieldConversions"><span>FieldConversions</span></li><li class="in" name="com.twitter.scalding.LowPriorityFieldConversions"><span>LowPriorityFieldConversions</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="org.kiji.modeling.lib.RecommendationPipe#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(pipe:cascading.pipe.Pipe):org.kiji.modeling.lib.RecommendationPipe"></a>
+      <a id="&lt;init&gt;:RecommendationPipe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">RecommendationPipe</span><span class="params">(<span name="pipe">pipe: <span class="extype" name="cascading.pipe.Pipe">Pipe</span></span>)</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">pipe</dt><dd class="cmt"><p>is the underlying Cascading Pipe.
+</p></dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:AnyRef):Boolean"></a>
+      <a id="!=(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
+      <a id="!=(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <a id="##():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:AnyRef):Boolean"></a>
+      <a id="==(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
+      <a id="==(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.kiji.modeling.lib.RecommendationPipe#adjustedCosineSimilarity" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="adjustedCosineSimilarity[R,C](fieldSpec:(cascading.tuple.Fields,cascading.tuple.Fields))(implicitevidence$6:R=&gt;Ordered[R],implicitevidence$7:C=&gt;Ordered[C]):cascading.pipe.Pipe"></a>
+      <a id="adjustedCosineSimilarity[R,C]((Fields,Fields))((R)⇒Ordered[R],(C)⇒Ordered[C]):Pipe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">adjustedCosineSimilarity</span><span class="tparams">[<span name="R">R</span>, <span name="C">C</span>]</span><span class="params">(<span name="fieldSpec">fieldSpec: (<span class="extype" name="cascading.tuple.Fields">Fields</span>, <span class="extype" name="cascading.tuple.Fields">Fields</span>)</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: (<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.adjustedCosineSimilarity.R">R</span>) ⇒ <span class="extype" name="scala.Ordered">Ordered</span>[<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.adjustedCosineSimilarity.R">R</span>]</span>, <span name="arg1">arg1: (<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.adjustedCosineSimilarity.C">C</span>) ⇒ <span class="extype" name="scala.Ordered">Ordered</span>[<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.adjustedCosineSimilarity.C">C</span>]</span>)</span><span class="result">: <span class="extype" name="cascading.pipe.Pipe">Pipe</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Calculates cosine similarity, returning a pipe of tuples of the form (first item, second item,
+similarity score).</p><div class="fullcomment"><div class="comment cmt"><p>Calculates cosine similarity, returning a pipe of tuples of the form (first item, second item,
+similarity score).  In adjust cosine similarity, we center the column vectors around the mean
+values of the rows before computing cosine similarity.</p><p>This method implements the algorithm described in
+<a href=http://files.grouplens.org/papers/www10_sarwar.pdf>
+&quot;Item-Based Collaborative Filtering Recommendation Algorithms&quot; by Sarwar, et al</a>, Section
+3.1.3.
+</p></div><dl class="paramcmts block"><dt class="tparam">R</dt><dd class="cmt"><p>is the type of the incoming row IDs.</p></dd><dt class="tparam">C</dt><dd class="cmt"><p>is the type of the incoming column IDs.</p></dd><dt class="param">fieldSpec</dt><dd class="cmt"><p>contains the (row ID, column ID, rating) fields in the current pipe and the
+    (first item, second item, similarity) fields in the output pipe.  For item-item similarity,
+    the rows will be user IDs and the columns will be item IDs.</p></dd><dt>returns</dt><dd class="cmt"><p>A pipe containing tuples of (first item, second item, similarity).
+</p></dd></dl></div>
+    </li><li name="com.twitter.scalding.LowPriorityFieldConversions#anyToFieldArg" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="anyToFieldArg(f:&lt;?&gt;):Comparable[_]"></a>
+      <a id="anyToFieldArg(Any):Comparable[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">anyToFieldArg</span><span class="params">(<span name="f">f: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="java.lang.Comparable">Comparable</span>[_]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>LowPriorityFieldConversions</dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#asList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asList(f:&lt;?&gt;):List[Comparable[_]]"></a>
+      <a id="asList(Fields):List[Comparable[_]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asList</span><span class="params">(<span name="f">f: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="java.lang.Comparable">Comparable</span>[_]]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#asSet" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asSet(f:&lt;?&gt;):Set[Comparable[_]]"></a>
+      <a id="asSet(Fields):Set[Comparable[_]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asSet</span><span class="params">(<span name="f">f: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="java.lang.Comparable">Comparable</span>[_]]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
+      <a id="clone():AnyRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="org.kiji.modeling.lib.RecommendationPipe#confidenceAndLift" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="confidenceAndLift(fieldSpec:(cascading.tuple.Fields,cascading.tuple.Fields),lhsMinSize:Int,lhsMaxSize:Int,rhsMinSize:Int,rhsMaxSize:Int,separator:String):cascading.pipe.Pipe"></a>
+      <a id="confidenceAndLift((Fields,Fields),Int,Int,Int,Int,String):Pipe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">confidenceAndLift</span><span class="params">(<span name="fieldSpec">fieldSpec: (<span class="extype" name="cascading.tuple.Fields">Fields</span>, <span class="extype" name="cascading.tuple.Fields">Fields</span>) = <span class="defval" name="(('itemset, 'support),<br/>          ('lhs, 'rhs, 'confidence, 'lift))">...</span></span>, <span name="lhsMinSize">lhsMinSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="lhsMaxSize">lhsMaxSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="rhsMinSize">rhsMinSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="rhsMaxSize">rhsMaxSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="separator">separator: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;,&quot;</span></span>)</span><span class="result">: <span class="extype" name="cascading.pipe.Pipe">Pipe</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Given a pipe containing exhaustive itemsets with their support values,
+contrive association rules of the form
+LHS (antecedent itemset) --&gt; RHS (consequent itemset)
+and then compute lift and confidence for these rules.</p><div class="fullcomment"><div class="comment cmt"><p>Given a pipe containing exhaustive itemsets with their support values,
+contrive association rules of the form
+LHS (antecedent itemset) --&gt; RHS (consequent itemset)
+and then compute lift and confidence for these rules.
+For itemsets LHS and RHS with corresponding supports support(LHS) and support(RHS),
+confidence(LHS --&gt; RHS) = support(LHS union RHS) / support(LHS)
+lift(LHS --&gt; RHS) = conf(LHS --&gt; RHS) / support(RHS).
+The minimum and maximum sizes of LHS and RHS may be provided as parameters,
+but ought to be small for reasonably fast computation.</p><p>These definitions can be found on the Wikipedia page for
+<a href="http://en.wikipedia.org/wiki/Association_rule_learning">
+Association rule learning
+</a>.</p><p>Input pipe must contain: itemset (string of comma-separated items) and support.
+Output pipe will contain: LHS itemset, RHS itemset, confidence, lift, support(LHS union RHS).</p><p>NOTE: Calculating itemsets can create an exponentially large number of tuples, depending on
+the minimum and maximum size specified. We also do not discard existing fields on the pipe
+while doing so. Attention must be paid to keeping only required fields on the pipe before
+calling this method.</p><p>Example:</p><pre>pipe.confidenceAndLift(lhsMinSize = <span class="num">1</span>, lhsMaxSize = <span class="num">2</span>, rhsMinSize = <span class="num">1</span>, rhsMaxSize = <span class="num">2</span>)</pre></div><dl class="paramcmts block"><dt class="param">fieldSpec</dt><dd class="cmt"><p>is a mapping from the input field names - the first of which is the name
+    for the field containing the itemset, the second is the field holding support - to
+    result fields - names for the lhs, rhs, confidence, lift respectively. By default, the
+    input fields are called 'itemset and 'support and the output fields are called
+    ('lhs, 'rhs, 'confidence, 'lift).</p></dd><dt class="param">lhsMinSize</dt><dd class="cmt"><p>minimum size of the LHS</p></dd><dt class="param">lhsMaxSize</dt><dd class="cmt"><p>maximum size of the LHS</p></dd><dt class="param">rhsMinSize</dt><dd class="cmt"><p>minimum size of the RHS</p></dd><dt class="param">rhsMaxSize</dt><dd class="cmt"><p>maximum size of the RHS</p></dd><dt class="param">separator</dt><dd class="cmt"><p>for itemset strings
+</p></dd></dl></div>
+    </li><li name="org.kiji.modeling.lib.RecommendationPipe#cosineSimilarity" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="cosineSimilarity[R,C](fieldSpec:(cascading.tuple.Fields,cascading.tuple.Fields))(implicitevidence$4:R=&gt;Ordered[R],implicitevidence$5:C=&gt;Ordered[C]):cascading.pipe.Pipe"></a>
+      <a id="cosineSimilarity[R,C]((Fields,Fields))((R)⇒Ordered[R],(C)⇒Ordered[C]):Pipe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cosineSimilarity</span><span class="tparams">[<span name="R">R</span>, <span name="C">C</span>]</span><span class="params">(<span name="fieldSpec">fieldSpec: (<span class="extype" name="cascading.tuple.Fields">Fields</span>, <span class="extype" name="cascading.tuple.Fields">Fields</span>)</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: (<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.cosineSimilarity.R">R</span>) ⇒ <span class="extype" name="scala.Ordered">Ordered</span>[<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.cosineSimilarity.R">R</span>]</span>, <span name="arg1">arg1: (<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.cosineSimilarity.C">C</span>) ⇒ <span class="extype" name="scala.Ordered">Ordered</span>[<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.cosineSimilarity.C">C</span>]</span>)</span><span class="result">: <span class="extype" name="cascading.pipe.Pipe">Pipe</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Calculates cosine similarity, returning a pipe of tuples of the form (first item, second item,
+similarity score).</p><div class="fullcomment"><div class="comment cmt"><p>Calculates cosine similarity, returning a pipe of tuples of the form (first item, second item,
+similarity score).</p><p>This method implements the algorithm described in
+<a href=http://files.grouplens.org/papers/www10_sarwar.pdf>
+&quot;Item-Based Collaborative Filtering Recommendation Algorithms&quot; by Sarwar, et al</a>, Section
+3.1.1.
+</p></div><dl class="paramcmts block"><dt class="tparam">R</dt><dd class="cmt"><p>The type of the incoming row IDs.</p></dd><dt class="tparam">C</dt><dd class="cmt"><p>The type of the incoming column IDs.</p></dd><dt class="param">fieldSpec</dt><dd class="cmt"><p>contains the (row ID, column ID, rating) fields in the current pipe and the
+    (first item, second item, similarity) fields in the output pipe.  For item-item similarity,
+    the rows will be user IDs and the columns will be item IDs.</p></dd><dt>returns</dt><dd class="cmt"><p>A pipe containing tuples of (first item, second item, similarity).
+</p></dd></dl></div>
+    </li><li name="org.kiji.modeling.lib.RecommendationPipe#count" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="count(resultField:cascading.tuple.Fields):cascading.pipe.Pipe"></a>
+      <a id="count(Fields):Pipe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">count</span><span class="params">(<span name="resultField">resultField: <span class="extype" name="cascading.tuple.Fields">Fields</span> = <span class="symbol">'totalRows</span></span>)</span><span class="result">: <span class="extype" name="cascading.pipe.Pipe">Pipe</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">This is a convenience function on a pipe to count all the tuples (rows).</p><div class="fullcomment"><div class="comment cmt"><p>This is a convenience function on a pipe to count all the tuples (rows). Provided
+because users seem to expect something like &quot;count&quot;, rather than a
+groupBy { _.size }
+NOTE: This is an expensive operation.
+</p></div><dl class="paramcmts block"><dt class="param">resultField</dt><dd class="cmt"><p>is the name of the field that stores the count of tuples. If unspecified,
+    the result field is called &quot;totalRows&quot;.</p></dd><dt>returns</dt><dd class="cmt"><p>a pipe with a field specified by resultField that contains the number of tuples.
+</p></dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#defaultMode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="defaultMode(fromFields:&lt;?&gt;,toFields:&lt;?&gt;):cascading.tuple.Fields"></a>
+      <a id="defaultMode(Fields,Fields):Fields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultMode</span><span class="params">(<span name="fromFields">fromFields: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>, <span name="toFields">toFields: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>)</span><span class="result">: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#ensureUniqueFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ensureUniqueFields(left:&lt;?&gt;,right:&lt;?&gt;,rightPipe:&lt;?&gt;):(cascading.tuple.Fields,cascading.pipe.Pipe)"></a>
+      <a id="ensureUniqueFields(Fields,Fields,Pipe):(Fields,Pipe)"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ensureUniqueFields</span><span class="params">(<span name="left">left: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>, <span name="right">right: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>, <span name="rightPipe">rightPipe: <span class="extype" name="cascading.pipe.Pipe">Pipe</span></span>)</span><span class="result">: (<span class="extype" name="cascading.tuple.Fields">Fields</span>, <span class="extype" name="cascading.pipe.Pipe">Pipe</span>)</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#enumValueToFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="enumValueToFields(x:Enumeration#Value):cascading.tuple.Fields"></a>
+      <a id="enumValueToFields(Value):Fields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">enumValueToFields</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Enumeration.Value">Value</span></span>)</span><span class="result">: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
+      <a id="eq(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
+      <a id="equals(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#fieldFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fieldFields[T&lt;:TraversableOnce[com.twitter.scalding.Field[_]]](f:T):com.twitter.scalding.RichFields"></a>
+      <a id="fieldFields[T&lt;:TraversableOnce[Field[_]]](T):RichFields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fieldFields</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.TraversableOnce">TraversableOnce</span>[<span class="extype" name="com.twitter.scalding.Field">Field</span>[_]]</span>]</span><span class="params">(<span name="f">f: <span class="extype" name="com.twitter.scalding.FieldConversions.fieldFields.T">T</span></span>)</span><span class="result">: <span class="extype" name="com.twitter.scalding.RichFields">RichFields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#fieldToFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fieldToFields(f:com.twitter.scalding.Field[_]):com.twitter.scalding.RichFields"></a>
+      <a id="fieldToFields(Field[_]):RichFields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fieldToFields</span><span class="params">(<span name="f">f: <span class="extype" name="com.twitter.scalding.Field">Field</span>[_]</span>)</span><span class="result">: <span class="extype" name="com.twitter.scalding.RichFields">RichFields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#fields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fields[T&lt;:TraversableOnce[Symbol]](f:T):cascading.tuple.Fields"></a>
+      <a id="fields[T&lt;:TraversableOnce[Symbol]](T):Fields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fields</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.TraversableOnce">TraversableOnce</span>[<span class="extype" name="scala.Symbol">Symbol</span>]</span>]</span><span class="params">(<span name="f">f: <span class="extype" name="com.twitter.scalding.FieldConversions.fields.T">T</span></span>)</span><span class="result">: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#fieldsToRichFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fieldsToRichFields(fields:cascading.tuple.Fields):com.twitter.scalding.RichFields"></a>
+      <a id="fieldsToRichFields(Fields):RichFields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fieldsToRichFields</span><span class="params">(<span name="fields">fields: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>)</span><span class="result">: <span class="extype" name="com.twitter.scalding.RichFields">RichFields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="org.kiji.modeling.lib.RecommendationPipe#findSimilarItemsUsingLocalitySensitiveHashing" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="findSimilarItemsUsingLocalitySensitiveHashing[T,H](fieldSpec:(cascading.tuple.Fields,cascading.tuple.Fields),signatureLength:Int,similarity:Double,numCommonBuckets:Int)(implicitelementOrdering:Ordering[T],implicitIdOrdering:Ordering[H]):cascading.pipe.Pipe"></a>
+      <a id="findSimilarItemsUsingLocalitySensitiveHashing[T,H]((Fields,Fields),Int,Double,Int)(Ordering[T],Ordering[H]):Pipe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">findSimilarItemsUsingLocalitySensitiveHashing</span><span class="tparams">[<span name="T">T</span>, <span name="H">H</span>]</span><span class="params">(<span name="fieldSpec">fieldSpec: (<span class="extype" name="cascading.tuple.Fields">Fields</span>, <span class="extype" name="cascading.tuple.Fields">Fields</span>)</span>, <span name="signatureLength">signatureLength: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">128</span></span>, <span name="similarity">similarity: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.8</span></span>, <span name="numCommonBuckets">numCommonBuckets: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">2</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="elementOrdering">elementOrdering: <span class="extype" name="scala.Ordering">Ordering</span>[<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.findSimilarItemsUsingLocalitySensitiveHashing.T">T</span>]</span>, <span name="IdOrdering">IdOrdering: <span class="extype" name="scala.Ordering">Ordering</span>[<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.findSimilarItemsUsingLocalitySensitiveHashing.H">H</span>]</span>)</span><span class="result">: <span class="extype" name="cascading.pipe.Pipe">Pipe</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">This function uses Locality Sensitive Hashing (LSH) with Jaccard similarity as the similarity
+metric to find similar items in a massive collection.</p><div class="fullcomment"><div class="comment cmt"><p>This function uses Locality Sensitive Hashing (LSH) with Jaccard similarity as the similarity
+metric to find similar items in a massive collection. An 'item' is anything with a
+high-dimensional, sparse vector representation. E.g. a product sold by a retailer can be
+represented by a vector containing the IDs of the customers who have purchased it.
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>is the data type of the elements in an item's sparse vector representation.
+    The allowed types are : Char, Short, Int, Float, Long, Double, String, Array[Byte],
+    Array[Char], Array[Short], Array[Int], Array[Float], Array[Long] &amp; Array[Double].</p></dd><dt class="tparam">H</dt><dd class="cmt"><p>is the data type of an item's ID.</p></dd><dt class="param">fieldSpec</dt><dd class="cmt"><p>is a mapping from 2 fields (The first field contains an item's ID and the
+    second field contains it's vector representation) to 2 fields
+    (The first field contains an item's ID and the second field contains
+    a list of IDs of other items in the collection similar to it).</p></dd><dt class="param">signatureLength</dt><dd class="cmt"><p>is the number of hash functions to use while compressing an item's
+    sparse vector to a short MinHash signature. Each hash in the signature will be 4 bytes
+    long. Default = 128.</p></dd><dt class="param">similarity</dt><dd class="cmt"><p>is the minimum fractional value, corresponding to the intersection of two
+    items divided by their union, above which items should be considered
+    similar.  Default = 0.8</p></dd><dt class="param">numCommonBuckets</dt><dd class="cmt"><p>is the minimum number of common buckets that 2 items' Minhash
+    signatures should hash to, in order for them to be considered
+    similar. Default = 2</p></dd><dt>returns</dt><dd class="cmt"><p>a RichPipe with the specified output fields that contain all the items that were found
+    to be similar in the collection.
+</p></dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#fromEnum" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fromEnum[T&lt;:Enumeration](enumeration:T):cascading.tuple.Fields"></a>
+      <a id="fromEnum[T&lt;:Enumeration](T):Fields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fromEnum</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.Enumeration">Enumeration</span></span>]</span><span class="params">(<span name="enumeration">enumeration: <span class="extype" name="com.twitter.scalding.FieldConversions.fromEnum.T">T</span></span>)</span><span class="result">: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <a id="getClass():Class[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#getField" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getField(f:&lt;?&gt;,idx:&lt;?&gt;):cascading.tuple.Fields"></a>
+      <a id="getField(Fields,Int):Fields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getField</span><span class="params">(<span name="f">f: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>, <span name="idx">idx: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#hasInts" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hasInts(f:&lt;?&gt;):Boolean"></a>
+      <a id="hasInts(Fields):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hasInts</span><span class="params">(<span name="f">f: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <a id="hashCode():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#intFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="intFields[T&lt;:TraversableOnce[Int]](f:T):cascading.tuple.Fields"></a>
+      <a id="intFields[T&lt;:TraversableOnce[Int]](T):Fields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">intFields</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.TraversableOnce">TraversableOnce</span>[<span class="extype" name="scala.Int">Int</span>]</span>]</span><span class="params">(<span name="f">f: <span class="extype" name="com.twitter.scalding.FieldConversions.intFields.T">T</span></span>)</span><span class="result">: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#intToFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="intToFields(x:Int):cascading.tuple.Fields"></a>
+      <a id="intToFields(Int):Fields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">intToFields</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#integerToFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="integerToFields(x:Integer):cascading.tuple.Fields"></a>
+      <a id="integerToFields(Integer):Fields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">integerToFields</span><span class="params">(<span name="x">x: <span class="extype" name="java.lang.Integer">Integer</span></span>)</span><span class="result">: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.kiji.modeling.lib.RecommendationPipe#jaccardSimilarity" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="jaccardSimilarity[R,C](fieldSpec:(cascading.tuple.Fields,cascading.tuple.Fields))(implicitevidence$8:R=&gt;Ordered[R],implicitevidence$9:C=&gt;Ordered[C]):cascading.pipe.Pipe"></a>
+      <a id="jaccardSimilarity[R,C]((Fields,Fields))((R)⇒Ordered[R],(C)⇒Ordered[C]):Pipe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jaccardSimilarity</span><span class="tparams">[<span name="R">R</span>, <span name="C">C</span>]</span><span class="params">(<span name="fieldSpec">fieldSpec: (<span class="extype" name="cascading.tuple.Fields">Fields</span>, <span class="extype" name="cascading.tuple.Fields">Fields</span>)</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: (<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.jaccardSimilarity.R">R</span>) ⇒ <span class="extype" name="scala.Ordered">Ordered</span>[<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.jaccardSimilarity.R">R</span>]</span>, <span name="arg1">arg1: (<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.jaccardSimilarity.C">C</span>) ⇒ <span class="extype" name="scala.Ordered">Ordered</span>[<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.jaccardSimilarity.C">C</span>]</span>)</span><span class="result">: <span class="extype" name="cascading.pipe.Pipe">Pipe</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Calculates Jaccard correlation-based similarity, returning a pipe of tuples of the form (first
+item, second item, similarity score).</p><div class="fullcomment"><div class="comment cmt"><p>Calculates Jaccard correlation-based similarity, returning a pipe of tuples of the form (first
+item, second item, similarity score).</p><p>This method implements the standard
+<a href=http://en.wikipedia.org/wiki/Jaccard_index>Jaccard index formula</a>.
+</p></div><dl class="paramcmts block"><dt class="tparam">R</dt><dd class="cmt"><p>is the type of the incoming row IDs.</p></dd><dt class="tparam">C</dt><dd class="cmt"><p>is the type of the incoming column IDs.</p></dd><dt class="param">fieldSpec</dt><dd class="cmt"><p>contains the (row ID, column ID, rating) fields in the current pipe and the
+    (first item, second item, similarity) fields in the output pipe.  For item-item similarity,
+    the rows will be user IDs and the columns will be item IDs.</p></dd><dt>returns</dt><dd class="cmt"><p>A pipe containing tuples of (first item, second item, similarity).
+</p></dd></dl></div>
+    </li><li name="org.kiji.modeling.lib.RecommendationPipe#joinWithCount" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="joinWithCount(toField:cascading.tuple.Fields):cascading.pipe.Pipe"></a>
+      <a id="joinWithCount(Fields):Pipe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">joinWithCount</span><span class="params">(<span name="toField">toField: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>)</span><span class="result">: <span class="extype" name="cascading.pipe.Pipe">Pipe</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">This function joins every row in the pipe with the total count of the rows.</p><div class="fullcomment"><div class="comment cmt"><p>This function joins every row in the pipe with the total count of the rows. This is useful
+when performing normalization. Note: This operation is very slow, considering it must be sent
+to a single reducer to count the rows, followed by crossing this data with all the rows.
+</p></div><dl class="paramcmts block"><dt class="param">toField</dt><dd class="cmt"><p>is the name of the field that will hold the total in the pipe.</p></dd><dt>returns</dt><dd class="cmt"><p>a pipe with a new field attached, which holds the total count.
+</p></dd></dl></div>
+    </li><li name="org.kiji.modeling.lib.RecommendationPipe#joinWithGroupCount" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="joinWithGroupCount(fieldSpec:(cascading.tuple.Fields,cascading.tuple.Fields)):cascading.pipe.Pipe"></a>
+      <a id="joinWithGroupCount((Fields,Fields)):Pipe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">joinWithGroupCount</span><span class="params">(<span name="fieldSpec">fieldSpec: (<span class="extype" name="cascading.tuple.Fields">Fields</span>, <span class="extype" name="cascading.tuple.Fields">Fields</span>)</span>)</span><span class="result">: <span class="extype" name="cascading.pipe.Pipe">Pipe</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">This function joins every row in the pipe with the size of the group it belongs to.</p><div class="fullcomment"><div class="comment cmt"><p>This function joins every row in the pipe with the size of the group it belongs to. The
+parameter fromFields determines the criteria for the group.
+</p></div><dl class="paramcmts block"><dt class="param">fieldSpec</dt><dd class="cmt"><p>a mapping from the fields on which to group to the output field name.</p></dd><dt>returns</dt><dd class="cmt"><p>a pipe containing the groups, along with a field for their size.
+</p></dd></dl></div>
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
+      <a id="ne(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#newSymbol" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="newSymbol(avoid:&lt;?&gt;,guess:&lt;?&gt;,trial:&lt;?&gt;):Symbol"></a>
+      <a id="newSymbol(Set[Symbol],Symbol,Int):Symbol"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">newSymbol</span><span class="params">(<span name="avoid">avoid: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Symbol">Symbol</span>]</span>, <span name="guess">guess: <span class="extype" name="scala.Symbol">Symbol</span></span>, <span name="trial">trial: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Symbol">Symbol</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd><dt>Annotations</dt><dd>
+                <span class="name">@tailrec</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#parseAnySeqToFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="parseAnySeqToFields[T&lt;:TraversableOnce[Any]](anyf:T):cascading.tuple.Fields"></a>
+      <a id="parseAnySeqToFields[T&lt;:TraversableOnce[Any]](T):Fields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">parseAnySeqToFields</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.TraversableOnce">TraversableOnce</span>[<span class="extype" name="scala.Any">Any</span>]</span>]</span><span class="params">(<span name="anyf">anyf: <span class="extype" name="com.twitter.scalding.FieldConversions.parseAnySeqToFields.T">T</span></span>)</span><span class="result">: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="org.kiji.modeling.lib.RecommendationPipe#pearsonSimilarity" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="pearsonSimilarity[R,C](fieldSpec:(cascading.tuple.Fields,cascading.tuple.Fields))(implicitevidence$10:R=&gt;Ordered[R],implicitevidence$11:C=&gt;Ordered[C]):cascading.pipe.Pipe"></a>
+      <a id="pearsonSimilarity[R,C]((Fields,Fields))((R)⇒Ordered[R],(C)⇒Ordered[C]):Pipe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">pearsonSimilarity</span><span class="tparams">[<span name="R">R</span>, <span name="C">C</span>]</span><span class="params">(<span name="fieldSpec">fieldSpec: (<span class="extype" name="cascading.tuple.Fields">Fields</span>, <span class="extype" name="cascading.tuple.Fields">Fields</span>)</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: (<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.pearsonSimilarity.R">R</span>) ⇒ <span class="extype" name="scala.Ordered">Ordered</span>[<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.pearsonSimilarity.R">R</span>]</span>, <span name="arg1">arg1: (<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.pearsonSimilarity.C">C</span>) ⇒ <span class="extype" name="scala.Ordered">Ordered</span>[<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.pearsonSimilarity.C">C</span>]</span>)</span><span class="result">: <span class="extype" name="cascading.pipe.Pipe">Pipe</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Calculates Pearson correlation-based similarity, returning a pipe of tuples of the form (first
+item, second item, similarity score).</p><div class="fullcomment"><div class="comment cmt"><p>Calculates Pearson correlation-based similarity, returning a pipe of tuples of the form (first
+item, second item, similarity score).</p><p>This method implements the algorithm described in
+<a href=http://files.grouplens.org/papers/www10_sarwar.pdf>
+&quot;Item-Based Collaborative Filtering Recommendation Algorithms&quot; by Sarwar, et al</a>, Section
+3.1.2.
+</p></div><dl class="paramcmts block"><dt class="tparam">R</dt><dd class="cmt"><p>is the type of the incoming row IDs.</p></dd><dt class="tparam">C</dt><dd class="cmt"><p>is the type of the incoming column IDs.</p></dd><dt class="param">fieldSpec</dt><dd class="cmt"><p>contains the (row ID, column ID, rating) fields in the current pipe and the
+    (first item, second item, similarity) fields in the output pipe.  For item-item similarity,
+    the rows will be user IDs and the columns will be item IDs.</p></dd><dt>returns</dt><dd class="cmt"><p>A pipe containing tuples of (first item, second item, similarity).
+</p></dd></dl></div>
+    </li><li name="org.kiji.modeling.lib.RecommendationPipe#pipe" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="pipe:cascading.pipe.Pipe"></a>
+      <a id="pipe:Pipe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">pipe</span><span class="result">: <span class="extype" name="cascading.pipe.Pipe">Pipe</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">is the underlying Cascading Pipe.</p>
+    </li><li name="org.kiji.modeling.framework.ModelPipeConversions#pipe2RecommendationPipe" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="pipe2RecommendationPipe(pipe:cascading.pipe.Pipe):org.kiji.modeling.lib.RecommendationPipe"></a>
+      <a id="pipe2RecommendationPipe(Pipe):RecommendationPipe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">pipe2RecommendationPipe</span><span class="params">(<span name="pipe">pipe: <span class="extype" name="cascading.pipe.Pipe">Pipe</span></span>)</span><span class="result">: <a href="" class="extype" name="org.kiji.modeling.lib.RecommendationPipe">RecommendationPipe</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Converts a Cascading Pipe to an Express Recommendation Pipe.</p><div class="fullcomment"><div class="comment cmt"><p>Converts a Cascading Pipe to an Express Recommendation Pipe. This method permits implicit
+conversions from Pipe to RecommendationPipe.
+</p></div><dl class="paramcmts block"><dt class="param">pipe</dt><dd class="cmt"><p>to convert to a RecommendationPipe.</p></dd><dt>returns</dt><dd class="cmt"><p>a RecommendationPipe wrapping the specified Pipe.
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../framework/ModelPipeConversions.html" class="extype" name="org.kiji.modeling.framework.ModelPipeConversions">ModelPipeConversions</a></dd></dl></div>
+    </li><li name="org.kiji.modeling.lib.RecommendationPipe#prepareItemSets" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="prepareItemSets[T](fieldSpec:(cascading.tuple.Fields,cascading.tuple.Fields),minSetSize:Int,maxSetSize:Int,separator:String)(implicitordering:Ordering[T]):cascading.pipe.Pipe"></a>
+      <a id="prepareItemSets[T]((Fields,Fields),Int,Int,String)(Ordering[T]):Pipe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">prepareItemSets</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="fieldSpec">fieldSpec: (<span class="extype" name="cascading.tuple.Fields">Fields</span>, <span class="extype" name="cascading.tuple.Fields">Fields</span>)</span>, <span name="minSetSize">minSetSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">2</span></span>, <span name="maxSetSize">maxSetSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">5</span></span>, <span name="separator">separator: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;,&quot;</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ordering">ordering: <span class="extype" name="scala.Ordering">Ordering</span>[<span class="extype" name="org.kiji.modeling.lib.RecommendationPipe.prepareItemSets.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="cascading.pipe.Pipe">Pipe</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">This function takes profile information (e.</p><div class="fullcomment"><div class="comment cmt"><p>This function takes profile information (e.g. a history of purchases) or order data and outputs
+smaller subsets of co-occurring items. If the minSetSize and maxSetSize is 2, it will create
+tuples of items that are found within the same history/order. This will typically be used to
+calculate the numerator (raw count) for Jaccard similarity, or the number of N-grams.
+Mathematically, if N = number of orders, m = minSetSize and M = maxSetSize, the number of
+resulting subsets will be = N choose m + N choose (m+1) + N choose (m+2) ... N choose M
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>is the data type of the element in the order/purchase history.</p></dd><dt class="param">fieldSpec</dt><dd class="cmt"><p>mapping from the field(s) which represent the order/purchase history to the
+    field that will hold the resulting N-grams.</p></dd><dt class="param">minSetSize</dt><dd class="cmt"><p>is the minimum size of the subset or N-gram. Optional.</p></dd><dt class="param">maxSetSize</dt><dd class="cmt"><p>is the maximum size of the subset or N-gram. Optional. Care must be taken
+    while choosing this value as the number of resulting tuples might be too large to hold in
+    memory at a single mapper or may take a while to generate.</p></dd><dt class="param">separator</dt><dd class="cmt"><p>is used to create the identifier string for the itemset.</p></dd><dt>returns</dt><dd class="cmt"><p>a RichPipe with the specified output field which holds the resulting tuples.
+</p></dd></dl></div>
+    </li><li name="com.twitter.scalding.LowPriorityFieldConversions#productToFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="productToFields(f:Product):cascading.tuple.Fields"></a>
+      <a id="productToFields(Product):Fields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">productToFields</span><span class="params">(<span name="f">f: <span class="extype" name="scala.Product">Product</span></span>)</span><span class="result">: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>LowPriorityFieldConversions</dd></dl></div>
+    </li><li name="org.kiji.modeling.framework.ModelPipeConversions#source2RecommendationPipe" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="source2RecommendationPipe(source:org.kiji.express.flow.KijiSource)(implicitflowDef:cascading.flow.FlowDef,implicitmode:com.twitter.scalding.Mode):org.kiji.modeling.lib.RecommendationPipe"></a>
+      <a id="source2RecommendationPipe(KijiSource)(FlowDef,Mode):RecommendationPipe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">source2RecommendationPipe</span><span class="params">(<span name="source">source: <span class="extype" name="org.kiji.express.flow.KijiSource">KijiSource</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="flowDef">flowDef: <span class="extype" name="cascading.flow.FlowDef">FlowDef</span></span>, <span name="mode">mode: <span class="extype" name="com.twitter.scalding.Mode">Mode</span></span>)</span><span class="result">: <a href="" class="extype" name="org.kiji.modeling.lib.RecommendationPipe">RecommendationPipe</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Converts a KijiSource to a KijiExpress Recommendation Pipe.</p><div class="fullcomment"><div class="comment cmt"><p>Converts a KijiSource to a KijiExpress Recommendation Pipe. This method permits implicit
+conversions from Source to RecommendationPipe.</p><p>We expect flowDef and mode implicits to be in scope.  This should be true in the context of a
+Job, KijiJob, or inside the ShellRunner.
+</p></div><dl class="paramcmts block"><dt class="param">source</dt><dd class="cmt"><p>to convert to a KijiPipe.</p></dd><dt>returns</dt><dd class="cmt"><p>a RecommendationPipe read from the specified source.
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../framework/ModelPipeConversions.html" class="extype" name="org.kiji.modeling.framework.ModelPipeConversions">ModelPipeConversions</a></dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#strFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="strFields[T&lt;:TraversableOnce[String]](f:T):cascading.tuple.Fields"></a>
+      <a id="strFields[T&lt;:TraversableOnce[String]](T):Fields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">strFields</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.TraversableOnce">TraversableOnce</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>]</span><span class="params">(<span name="f">f: <span class="extype" name="com.twitter.scalding.FieldConversions.strFields.T">T</span></span>)</span><span class="result">: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#stringToFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="stringToFields(x:String):cascading.tuple.Fields"></a>
+      <a id="stringToFields(String):Fields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">stringToFields</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="org.kiji.modeling.lib.RecommendationPipe#support" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="support(fieldSpec:(cascading.tuple.Fields,cascading.tuple.Fields),normalizingPipe:Option[cascading.pipe.Pipe],normalizingConstant:Option[Double],normalizingField:cascading.tuple.Fields,numReducers:Int):cascading.pipe.Pipe"></a>
+      <a id="support((Fields,Fields),Option[Pipe],Option[Double],Fields,Int):Pipe"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">support</span><span class="params">(<span name="fieldSpec">fieldSpec: (<span class="extype" name="cascading.tuple.Fields">Fields</span>, <span class="extype" name="cascading.tuple.Fields">Fields</span>)</span>, <span name="normalizingPipe">normalizingPipe: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="cascading.pipe.Pipe">Pipe</span>]</span>, <span name="normalizingConstant">normalizingConstant: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Double">Double</span>]</span>, <span name="normalizingField">normalizingField: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>, <span name="numReducers">numReducers: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="cascading.pipe.Pipe">Pipe</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Compute support for itemsets (N-grams of entities that occur together in some context, e.</p><div class="fullcomment"><div class="comment cmt"><p>Compute support for itemsets (N-grams of entities that occur together in some context, e.g.
+products in an order) in a pipe containing sets of orders.
+Support is typically expressed as a fraction, rather than an absolute value.
+The denominator for this fraction needs to be provided either
+as a constant or a pipe and a field within it.</p><p>Example:</p><pre>pipe.support('itemset -&gt; ('frequency, 'support), totalsPipe, <span class="std">None</span>, <span class="lit">'norm)</span></pre></div><dl class="paramcmts block"><dt class="param">fieldSpec</dt><dd class="cmt"><p>is the mapping of the field in this pipe that contains the co-occurring
+    N-grams to two resultant fields: the first that will store the frequency of the N-gram
+    and a second that will store the support of this N-gram.</p></dd><dt class="param">normalizingPipe</dt><dd class="cmt"><p>is a pipe that may contain the normalizing constant. Optional.</p></dd><dt class="param">normalizingConstant</dt><dd class="cmt"><p>is a normalizing constant.</p></dd><dt class="param">normalizingField</dt><dd class="cmt"><p>is either the name of the field in the normalizing pipe that contains
+    the normalizing constant or is the name of the field to insert into the pipe if you have
+    provided a normalizingConstant.</p></dd><dt class="param">numReducers</dt><dd class="cmt"><p>is used to set the number of reducers to a value different from that in
+    job config. Default = -1, to use whatever is in the job config.</p></dd><dt>returns</dt><dd class="cmt"><p>the pipe containing itemsets, their frequency and support in the specified result
+    fields and the normalizing field.
+</p></dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#symbolToFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="symbolToFields(x:Symbol):cascading.tuple.Fields"></a>
+      <a id="symbolToFields(Symbol):Fields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">symbolToFields</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Symbol">Symbol</span></span>)</span><span class="result">: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
+      <a id="synchronized[T0](⇒T0):T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <a id="toString():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#tuple2ToFieldsPair" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="tuple2ToFieldsPair[T,U](pair:(T,U))(implicittf:T=&gt;cascading.tuple.Fields,implicituf:U=&gt;cascading.tuple.Fields):(cascading.tuple.Fields,cascading.tuple.Fields)"></a>
+      <a id="tuple2ToFieldsPair[T,U]((T,U))((T)⇒Fields,(U)⇒Fields):(Fields,Fields)"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tuple2ToFieldsPair</span><span class="tparams">[<span name="T">T</span>, <span name="U">U</span>]</span><span class="params">(<span name="pair">pair: (<span class="extype" name="com.twitter.scalding.FieldConversions.tuple2ToFieldsPair.T">T</span>, <span class="extype" name="com.twitter.scalding.FieldConversions.tuple2ToFieldsPair.U">U</span>)</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="tf">tf: (<span class="extype" name="com.twitter.scalding.FieldConversions.tuple2ToFieldsPair.T">T</span>) ⇒ <span class="extype" name="cascading.tuple.Fields">Fields</span></span>, <span name="uf">uf: (<span class="extype" name="com.twitter.scalding.FieldConversions.tuple2ToFieldsPair.U">U</span>) ⇒ <span class="extype" name="cascading.tuple.Fields">Fields</span></span>)</span><span class="result">: (<span class="extype" name="cascading.tuple.Fields">Fields</span>, <span class="extype" name="cascading.tuple.Fields">Fields</span>)</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="com.twitter.scalding.FieldConversions#unitToFields" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="unitToFields(u:Unit):cascading.tuple.Fields"></a>
+      <a id="unitToFields(Unit):Fields"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">unitToFields</span><span class="params">(<span name="u">u: <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="cascading.tuple.Fields">Fields</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FieldConversions</dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
+      <a id="wait(Long,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
+      <a id="wait(Long):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="org.kiji.modeling.framework.ModelPipeConversions">
+              <h3>Inherited from <a href="../framework/ModelPipeConversions.html" class="extype" name="org.kiji.modeling.framework.ModelPipeConversions">ModelPipeConversions</a></h3>
+            </div><div class="parent" name="com.twitter.scalding.FieldConversions">
+              <h3>Inherited from <span class="extype" name="com.twitter.scalding.FieldConversions">FieldConversions</span></h3>
+            </div><div class="parent" name="com.twitter.scalding.LowPriorityFieldConversions">
+              <h3>Inherited from <span class="extype" name="com.twitter.scalding.LowPriorityFieldConversions">LowPriorityFieldConversions</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

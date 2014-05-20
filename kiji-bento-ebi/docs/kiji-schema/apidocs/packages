@@ -1,0 +1,16 @@
+org.apache.hadoop.hbase.mapreduce
+org.kiji.schema
+org.kiji.schema.impl
+org.kiji.schema.impl.hbase
+org.kiji.schema.util
+org.kiji.schema.zookeeper
+org.kiji.schema.mapreduce
+org.kiji.schema.tools
+org.kiji.schema.tools.synth
+org.kiji.schema.hbase
+org.kiji.schema.security
+org.kiji.schema.layout.impl
+org.kiji.schema.layout
+org.kiji.schema.filter
+org.slf4j
+org.kiji.schema.avro

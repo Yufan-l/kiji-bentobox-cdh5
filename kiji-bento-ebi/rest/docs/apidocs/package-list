@@ -1,0 +1,8 @@
+org.kiji.rest
+org.kiji.rest.config
+org.kiji.rest.health
+org.kiji.rest.plugins
+org.kiji.rest.representations
+org.kiji.rest.resources
+org.kiji.rest.serializers
+org.kiji.rest.util

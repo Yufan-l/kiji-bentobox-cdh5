@@ -1,0 +1,9 @@
+org.kiji.mapreduce.lib.avro
+org.kiji.mapreduce.lib.bulkimport
+org.kiji.mapreduce.lib.examples
+org.kiji.mapreduce.lib.gather
+org.kiji.mapreduce.lib.graph
+org.kiji.mapreduce.lib.map
+org.kiji.mapreduce.lib.produce
+org.kiji.mapreduce.lib.reduce
+org.kiji.mapreduce.lib.util
